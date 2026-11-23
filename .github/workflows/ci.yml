@@ -42,6 +42,8 @@ jobs:
           cache: npm
           cache-dependency-path: docs/package-lock.json
       - run: npm ci
+      - name: Markdown lint
+        run: npx --yes markdownlint-cli2@0.17.2 "../README.md" "../CONTRIBUTING.md" "**/*.md" "**/*.mdx"
       - run: npm run build
       - run: npm run check-links
       - run: npm run check-nav
